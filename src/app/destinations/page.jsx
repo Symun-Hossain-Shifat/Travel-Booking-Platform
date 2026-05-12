@@ -1,6 +1,11 @@
+import Link from 'next/link'
 import React from 'react'
+import { TfiArrowTopRight } from 'react-icons/tfi'
 
-function Destinationpage () {
+async function Destinationpage () {
+    const res = await fetch('http://localhost:5000/destination')
+    const Datas = await res.json()
+    console.log(Datas)
   return (
     <div>
  
@@ -25,26 +30,37 @@ function Destinationpage () {
         <button className='bg-cyan-500 hover:bg-cyan-600 text-white rounded-xl px-4 py-3 font-medium'>Search</button>
       </div>
 
-      <p className='text-sm text-gray-500 mb-5'>Showing 4 destinations</p>
+      <p className='text-sm text-gray-500 mb-5'>Showing {Datas.length} destinations</p>
 
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-      
-          {/* <div key={item.id} className='bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition'>
+      {
+        Datas.map(item => (
+             <div key={item._id} className='bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition'>
             <div className='relative h-56'>
-              <img src={item.image} alt={item.title} className='w-full h-full object-cover' />
-              <span className='absolute top-3 right-3 bg-white/90 text-sm px-3 py-1 rounded-full font-semibold'>★ {item.rating}</span>
+              <img src={item.imageUrl} alt=
+              'Travel image' className='w-full h-full object-cover' />
+              <span className='absolute top-3 right-3 bg-white/90 text-sm px-3 py-1 rounded-full font-semibold'>★ 4.5</span>
             </div>
             <div className='p-5'>
-              <p className='text-xs text-gray-500 mb-1'>📍 {item.country}</p>
+              <p className='text-xs text-gray-500 mb-1'>📍 {item.country
+}</p>
               <div className='flex items-start justify-between gap-3'>
-                <h3 className='font-semibold text-lg text-gray-900'>{item.title}</h3>
-                <p className='font-bold text-gray-900 whitespace-nowrap'>{item.price}<span className='text-xs text-gray-400 font-normal'> /person</span></p>
+                <h3 className='font-semibold text-lg text-gray-900'>{item.destinationName}</h3>
+                <p className='font-bold text-gray-900 whitespace-nowrap'>${item.price}<span className='text-xs text-gray-400 font-normal'> /person</span></p>
               </div>
-              <p className='text-sm text-gray-500 mt-1'>{item.nights}</p>
-              <button className='mt-4 text-cyan-600 font-semibold hover:underline'>BOOK NOW ↗</button>
+              <p className='text-sm text-gray-500 mt-1'>{item.duration
+}</p>
+              <Link href={`/destinations/${item._id}`}>
+              <button className='mt-4 flex gap-3 items-center text-cyan-600 font-semibold hover:underline'>See Details <TfiArrowTopRight /></button>
+              </Link>
+              
             </div>
           </div>
-    */}
+
+        ))
+      }
+          
+    
       </div>
     </section>
 

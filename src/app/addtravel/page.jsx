@@ -1,15 +1,32 @@
 'use client'
-import { Button, FieldError, Input, Label, ListBox, TextField , Select , TextArea, Card } from '@heroui/react'
-import React from 'react'
+import { Button, FieldError, Input, Label, ListBox, TextField , Select , TextArea, Card, Form } from '@heroui/react'
+
 
 function Addtravelpage () {
+    const onsubmit = async (e) => {
+   e.preventDefault()
+   const formData = new FormData(e.currentTarget);
+   const Datas  =  Object.fromEntries(formData.entries())
+   console.log(Datas)
+
+   const res = await fetch('http://localhost:5000/destination' , {
+    method : 'POST',
+    headers : {
+        'content-type' : 'application/json'
+    },
+    body : JSON.stringify(Datas)
+   })
+   const Data = await res.json()
+   console.log(Data)
+    }
   return (
-    <div className='mx-auto w-8/12 '>
+    <div className='mx-auto w-10/12 md:w-8/12 '>
 
     <h1 className='text-2xl font-semibold  mt-10'>Add New Travel </h1>
 
         <Card>
              <form
+             onSubmit={onsubmit}
             className="p-10 space-y-8"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

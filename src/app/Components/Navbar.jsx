@@ -34,16 +34,16 @@ function Navbarpage () {
   </div>
   <div className="navbar-end">
   <ul className='flex gap-5 mx-5 font-semibold'>
-      <li className="flex items-center gap-3  cursor-pointer hover:text-blue-500">
+      {/* <li className="flex items-center gap-3  cursor-pointer hover:text-blue-500">
   <Link href={'/'} className="flex  items-center gap-2">
     <span className=" p-1 rounded-full">
       <CgProfile />
     </span>
     Profile
   </Link>
-</li>
-        <li className='cursor-pointer hover:text-blue-500'><Link href={'/'}>Login</Link></li>
-        <li className='cursor-pointer hover:text-blue-500'><Link href={'/'}>SignUp</Link></li>
+</li> */}
+        <li className='cursor-pointer hover:text-blue-500 mx-5'><Link href={'/'}>Login</Link></li>
+        {/* <li className='cursor-pointer hover:text-blue-500'><Link href={'/'}>SignUp</Link></li> */}
        
       </ul>
   </div>
