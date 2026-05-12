@@ -1,6 +1,10 @@
+import { Card } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
+
+import { FiEdit3 } from 'react-icons/fi';
+import { RiDeleteBin6Line } from 'react-icons/ri';
 
 async function DestinationDetailspage ({params}) {
     const {id} = await params 
@@ -10,16 +14,36 @@ async function DestinationDetailspage ({params}) {
     console.log(Data)
   return (
     <div>
-        <div className="min-h-screen bg-white p-10">
+        <Card>
+             <div className="min-h-screen bg-white p-10">
 
       {/* Back Button */}
-      <div className="max-w-6xl mx-auto px-4 pt-4">
+      <div className="flex justify-between items-center p-5">
         <Link
           href="/destinations"
           className="text-sm text-blue-600 hover:underline"
         >
           ← Back to Destinations
         </Link>
+        <div className='flex gap-5'>
+            
+        <button className='btn btn-neutral btn-outline'>
+            <RiDeleteBin6Line />
+            Delete
+        </button>
+          
+       
+            <Link href={'/'}>
+              <button className='flex gap-2 items-center btn btn-error btn-outline '>
+                <FiEdit3 />
+
+            Edit
+        </button>
+            </Link>
+       
+
+        </div>
+       
       </div>
 
       {/* Hero Image */}
@@ -43,12 +67,13 @@ async function DestinationDetailspage ({params}) {
           {/* Title */}
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold">
-              Bali Paradise
+              {Data.destinationName}
             </h1>
             <div className="flex items-center gap-3 mt-2 text-sm text-gray-600">
               <span>⭐ 4.9 (234 reviews)</span>
               <span>•</span>
-              <span>7 Days / 6 Nights</span>
+              <span>{Data.duration
+}</span>
             </div>
           </div>
 
@@ -56,9 +81,7 @@ async function DestinationDetailspage ({params}) {
           <div>
             <h2 className="text-lg font-semibold mb-2">Overview</h2>
             <p className="text-gray-600 leading-relaxed">
-              Discover the magic of Bali with pristine beaches, ancient temples,
-              and vibrant culture. Experience luxury resorts, tropical landscapes,
-              and unforgettable sunsets.
+              {Data.description}
             </p>
           </div>
 
@@ -91,12 +114,13 @@ async function DestinationDetailspage ({params}) {
 
             <div className="text-sm text-gray-500">Starting from</div>
             <div className="text-2xl font-bold text-black">
-              $1299 <span className="text-sm font-normal">/ per person</span>
+              ${Data.price} <span className="text-sm font-normal">/ per person</span>
             </div>
 
             {/* Date */}
             <div className="mt-4 text-sm text-gray-600">
-              📅 05/15/2026
+              📅{Data.departureDate
+}
             </div>
 
             {/* Button */}
@@ -116,6 +140,9 @@ async function DestinationDetailspage ({params}) {
 
       </div>
     </div>
+
+        </Card>
+       
     </div>
   )
 }
