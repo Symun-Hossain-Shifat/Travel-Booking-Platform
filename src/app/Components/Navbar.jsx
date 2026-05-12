@@ -1,6 +1,7 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
-import logo from '../assets/Wanderlast.png'
+
 import { CgProfile } from 'react-icons/cg'
 
 function Navbarpage () {
@@ -15,17 +16,17 @@ function Navbarpage () {
       <ul
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li><a>Home</a></li>
-        <li><a>Destinations</a></li>
-        <li><a>My Booking</a></li>
-        <li><a>Admin</a></li>
+        <li><Link href={'/'}>Home</Link></li>
+        <li><Link href={'/destinations'}>Destinations</Link></li>
+        <li><Link href={'/'}>My Booking</Link></li>
+        <li><Link href={'/addtravel'}>Add Travel</Link></li>
       </ul>
     </div>
   </div>
   <div className="navbar-center">
     <a className="btn btn-ghost text-xl">
         <Image 
-        src={logo} 
+        src={'/assets/Wanderlast.png'} 
         alt="Logo Image"
         height={100}
         width={150} />
@@ -34,15 +35,15 @@ function Navbarpage () {
   <div className="navbar-end">
   <ul className='flex gap-5 mx-5 font-semibold'>
       <li className="flex items-center gap-3  cursor-pointer hover:text-blue-500">
-  <a className="flex  items-center gap-2">
+  <Link href={'/'} className="flex  items-center gap-2">
     <span className=" p-1 rounded-full">
       <CgProfile />
     </span>
     Profile
-  </a>
+  </Link>
 </li>
-        <li className='cursor-pointer hover:text-blue-500'><a>Login</a></li>
-        <li className='cursor-pointer hover:text-blue-500'><a>SignUp</a></li>
+        <li className='cursor-pointer hover:text-blue-500'><Link href={'/'}>Login</Link></li>
+        <li className='cursor-pointer hover:text-blue-500'><Link href={'/'}>SignUp</Link></li>
        
       </ul>
   </div>
