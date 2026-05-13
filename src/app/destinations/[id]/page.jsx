@@ -1,9 +1,11 @@
-import { Card } from '@heroui/react';
+import { Deletealert } from '@/app/Components/Delete';
+import { WithForm } from '@/app/Components/Modal';
+import { Button, Card } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 
-import { FiEdit3 } from 'react-icons/fi';
+
 import { RiDeleteBin6Line } from 'react-icons/ri';
 
 async function DestinationDetailspage ({params}) {
@@ -11,7 +13,7 @@ async function DestinationDetailspage ({params}) {
     console.log(id)
     const res = await fetch(`http://localhost:5000/destination/${id}`)
     const Data = await  res.json();
-    console.log(Data)
+    // console.log(Data)
   return (
     <div>
         <Card>
@@ -27,19 +29,12 @@ async function DestinationDetailspage ({params}) {
         </Link>
         <div className='flex gap-5'>
             
-        <button className='btn btn-neutral btn-outline'>
-            <RiDeleteBin6Line />
-            Delete
-        </button>
+        <Deletealert Data = {Data}></Deletealert>
           
        
-            <Link href={'/'}>
-              <button className='flex gap-2 items-center btn btn-error btn-outline '>
-                <FiEdit3 />
-
-            Edit
-        </button>
-            </Link>
+            
+          <WithForm  Data = {Data}></WithForm>
+          
        
 
         </div>

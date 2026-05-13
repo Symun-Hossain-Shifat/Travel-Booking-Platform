@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-import { CgProfile } from 'react-icons/cg'
 
 function Navbarpage () {
   return (
@@ -42,7 +41,7 @@ function Navbarpage () {
     Profile
   </Link>
 </li> */}
-        <li className='cursor-pointer hover:text-blue-500 mx-5'><Link href={'/'}>Login</Link></li>
+        <li className='cursor-pointer hover:text-blue-500 mx-5'><Link href='/signin'>Login</Link></li>
         {/* <li className='cursor-pointer hover:text-blue-500'><Link href={'/'}>SignUp</Link></li> */}
        
       </ul>
