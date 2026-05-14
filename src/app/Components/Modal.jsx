@@ -24,7 +24,7 @@ export function WithForm({Data}) {
     body : JSON.stringify(Datas)
    })
    const result = await res.json()
-   redirect(`/destination`)
+   
   
    console.log(result)
     }
