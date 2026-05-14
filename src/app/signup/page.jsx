@@ -2,6 +2,7 @@
 
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { FaUser, FaEnvelope, FaLock, FaGoogle } from "react-icons/fa";
 
 export default function RegisterSection() {
@@ -20,9 +21,12 @@ export default function RegisterSection() {
     
     callbackURL: "/signin",
 });
+console.log(data)
+console.log(error)
 
 if(data){
   alert('Registration Successfull')
+  redirect('/signin')
 }else if(error){
   alert(`Registration Failed . ${error}`)
 }
@@ -43,7 +47,7 @@ if(data){
         </div>
 
         {/* Form */}
-        <form className="space-y-4">
+        <form onSubmit={Signupfunction} className="space-y-4">
           
           {/* Full Name */}
           <div>
@@ -56,6 +60,7 @@ if(data){
               name="Name"
                 type="text"
                 placeholder="Enter your name"
+                required
                 className="w-full bg-transparent outline-none text-sm"
               />
             </div>
@@ -71,6 +76,7 @@ if(data){
               <input
               name="Email"
                 type="email"
+                required
                 placeholder="Enter your email"
                 className="w-full bg-transparent outline-none text-sm"
               />
@@ -87,23 +93,9 @@ if(data){
               <input
             
                 type="password"
-                placeholder="Create a password"
-                className="w-full bg-transparent outline-none text-sm"
-              />
-            </div>
-          </div>
-
-          {/* Confirm Password */}
-          <div>
-            <label className="block text-sm font-medium mb-2">
-              Confirm Password
-            </label>
-            <div className="flex items-center border rounded-md px-3 py-2 bg-gray-50">
-              <FaLock className="text-gray-400 mr-2" />
-              <input
                 name="Password"
-                type="password"
-                placeholder="Confirm your password"
+                required
+                placeholder="Create a password"
                 className="w-full bg-transparent outline-none text-sm"
               />
             </div>

@@ -1,9 +1,20 @@
+'use client'
+
+import { authClient } from '@/lib/auth-client'
+import { Button } from '@heroui/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { CgProfile } from 'react-icons/cg'
 
 
 function Navbarpage () {
+ 
+const signoutfunction = async () => {
+  await authClient.signOut();
+}
+const { data: session } = authClient.useSession()
+console.log(session)
   return (
     <div>
         <div className="navbar bg-base-100 shadow-sm">
@@ -32,19 +43,22 @@ function Navbarpage () {
     </a>
   </div>
   <div className="navbar-end">
-  <ul className='flex gap-5 mx-5 font-semibold'>
-      {/* <li className="flex items-center gap-3  cursor-pointer hover:text-blue-500">
-  <Link href={'/'} className="flex  items-center gap-2">
+  
+    {session? <ul className='flex gap-5 mx-5 font-semibold'>
+     <li className="flex items-center gap-3  cursor-pointer hover:text-blue-500">
+  <Link href={'/profile'} className="flex  items-center gap-2">
     <span className=" p-1 rounded-full">
       <CgProfile />
     </span>
     Profile
   </Link>
-</li> */}
-        <li className='cursor-pointer hover:text-blue-500 mx-5'><Link href='/signin'>Login</Link></li>
-        {/* <li className='cursor-pointer hover:text-blue-500'><Link href={'/'}>SignUp</Link></li> */}
-       
-      </ul>
+</li>
+<li className='cursor-pointer hover:text-blue-500'><Button variant="danger-soft" className='rounded-none' onClick={signoutfunction}>Logout</Button></li>
+    </ul>  :
+    <ul className='flex gap-5 mx-5 font-semibold'>
+   <li className='cursor-pointer hover:text-blue-500 mx-5'><Link href='/signin'><Button variant="danger-soft" className='rounded-none' >Login</Button></Link></li> </ul> }
+     
+      
   </div>
 </div>
          </div>

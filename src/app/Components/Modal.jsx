@@ -2,7 +2,7 @@
 import { ListBox, TextField , Select , TextArea,  } from '@heroui/react'
 
 import {Button, FieldError, Input, Label, Modal, Surface} from "@heroui/react";
-import { redirect } from 'next/dist/server/api-utils';
+
 
 
 import { CgProfile } from "react-icons/cg";
@@ -10,6 +10,7 @@ import { FiEdit3 } from "react-icons/fi";
 
 
 export function WithForm({Data}) {
+  console.log(Data)
     const onsubmit = async (e) => {
    e.preventDefault()
    const formData = new FormData(e.currentTarget);

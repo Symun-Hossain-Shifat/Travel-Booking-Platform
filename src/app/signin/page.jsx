@@ -19,6 +19,9 @@ export default function LoginSection() {
     rememberMe: false ,
     callbackURL: "/",
 });
+console.log(data)
+console.log(error)
+
 if(data) {
   alert('Login Successfull ')
 }else if(error){
