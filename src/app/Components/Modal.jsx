@@ -10,12 +10,12 @@ import { FiEdit3 } from "react-icons/fi";
 
 
 export function WithForm({Data}) {
-  console.log(Data)
+  // console.log(Data)
     const onsubmit = async (e) => {
    e.preventDefault()
    const formData = new FormData(e.currentTarget);
    const Datas  =  Object.fromEntries(formData.entries())
-   console.log(Datas)
+  //  console.log(Datas)
 
    const res = await fetch(`http://localhost:5000/destination/${Data._id}` , {
     method : 'PATCH',

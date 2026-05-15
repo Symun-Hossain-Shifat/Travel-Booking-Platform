@@ -29,6 +29,11 @@ if(data) {
 }
     
   }
+  const signingoogle = async () => {
+  await authClient.signIn.social({
+    provider: "google"
+  });
+  }
   return (
     <section className="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-10">
       <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-6 sm:p-8">
@@ -104,7 +109,7 @@ if(data) {
           </div>
 
           {/* Google */}
-          <button className="w-full border py-2.5 rounded-md flex items-center justify-center gap-2 hover:bg-gray-50 transition">
+          <button onClick={signingoogle} className="w-full border py-2.5 rounded-md flex items-center justify-center gap-2 hover:bg-gray-50 transition">
             <FaGoogle className="text-red-500" />
             <span className="text-sm">Sign Up With Google</span>
           </button>

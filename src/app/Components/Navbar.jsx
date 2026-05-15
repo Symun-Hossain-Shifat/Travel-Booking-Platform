@@ -14,7 +14,7 @@ const signoutfunction = async () => {
   await authClient.signOut();
 }
 const { data: session } = authClient.useSession()
-console.log(session)
+// console.log(session)
   return (
     <div>
         <div className="navbar bg-base-100 shadow-sm">
@@ -28,7 +28,7 @@ console.log(session)
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
         <li><Link href={'/'}>Home</Link></li>
         <li><Link href={'/destinations'}>Destinations</Link></li>
-        <li><Link href={'/'}>My Booking</Link></li>
+        <li><Link href={'/bookingdestination'}>My Booking</Link></li>
         <li><Link href={'/addtravel'}>Add Travel</Link></li>
       </ul>
     </div>

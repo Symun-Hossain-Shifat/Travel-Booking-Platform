@@ -1,19 +1,56 @@
+import Bookingpage from '@/app/Components/Bookingpage';
 import { Deletealert } from '@/app/Components/Delete';
 import { WithForm } from '@/app/Components/Modal';
-import { Button, Card } from '@heroui/react';
+import { auth } from '@/lib/auth';
+
+
+
+
+
+
+import { Card } from '@heroui/react';
+import { headers } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 
 
-import { RiDeleteBin6Line } from 'react-icons/ri';
+
 
 async function DestinationDetailspage ({params}) {
     const {id} = await params 
-    console.log(id)
+    // console.log(id)
     const res = await fetch(`http://localhost:5000/destination/${id}`)
     const Data = await  res.json();
     // console.log(Data)
+
+    const {destinationName,category , price , departureDate, imageUrl} = Data
+    
+    
+    const session = await auth.api.getSession({
+  headers: await headers(),
+});
+const User = session?.user
+const Name = User?.name
+const Email = User?.email
+const Id = User?.id 
+
+
+  // console.log(User)
+
+  const Bookinginfo = {
+     Id ,
+    destinationName,
+    category , 
+    price , 
+    departureDate,
+     imageUrl,
+     Name , 
+     Email
+
+  }
+ 
+console.log(Bookinginfo)
   return (
     <div>
         <Card>
@@ -104,35 +141,7 @@ async function DestinationDetailspage ({params}) {
         </div>
 
         {/* RIGHT SIDE - BOOKING CARD */}
-        <div className="lg:col-span-1">
-          <div className="border rounded-xl p-5 shadow-sm sticky top-5">
-
-            <div className="text-sm text-gray-500">Starting from</div>
-            <div className="text-2xl font-bold text-black">
-              ${Data.price} <span className="text-sm font-normal">/ per person</span>
-            </div>
-
-            {/* Date */}
-            <div className="mt-4 text-sm text-gray-600">
-              📅{Data.departureDate
-}
-            </div>
-
-            {/* Button */}
-            <button className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
-              Book Now →
-            </button>
-
-            {/* Features */}
-            <div className="mt-4 space-y-2 text-sm text-gray-600">
-              <p>✔ Free cancellation up to 7 days</p>
-              <p>✔ Travel insurance included</p>
-              <p>✔ 24/7 customer support</p>
-            </div>
-
-          </div>
-        </div>
-
+       <Bookingpage Data = {Data }  Bookinginfo={Bookinginfo}></Bookingpage>
       </div>
     </div>
 
