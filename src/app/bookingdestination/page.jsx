@@ -1,10 +1,15 @@
+
+
+
 import Image from "next/image";
 import { FaRegCalendarAlt, FaEye } from "react-icons/fa";
 import { MdOutlineConfirmationNumber } from "react-icons/md";
-import { RiDeleteBin6Line } from "react-icons/ri";
+
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import Updatedpage from "../Components/Updated";
+
 
 export default async function MyBookings() {
         
@@ -17,6 +22,8 @@ export default async function MyBookings() {
   const res =  await fetch(`http://localhost:5000/booking/${Id}`)
   const Datas = await res.json()
   console.log(Datas)
+
+
 
   return (
     <div className="w-10/12 mx-auto py-10">
@@ -84,17 +91,7 @@ export default async function MyBookings() {
               </div>
 
               {/* Buttons */}
-              <div className="flex gap-5 items-end">
-                <button className="border border-red-400 text-red-500 px-5 py-2 rounded-md flex items-center gap-2 hover:bg-red-50 transition">
-                  <RiDeleteBin6Line />
-                 Delete
-                </button>
-
-                <button className="bg-cyan-500 text-white px-5 py-2 rounded-md flex items-center gap-2 hover:bg-cyan-600 transition">
-                  <FaEye />
-                  View
-                </button>
-              </div>
+               <Updatedpage Id = {booking._id}></Updatedpage>
             </div>
           </div>
         ))}
