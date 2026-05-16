@@ -2,12 +2,6 @@ import Bookingpage from '@/app/Components/Bookingpage';
 import { Deletealert } from '@/app/Components/Delete';
 import { WithForm } from '@/app/Components/Modal';
 import { auth } from '@/lib/auth';
-
-
-
-
-
-
 import { Card } from '@heroui/react';
 import { headers } from 'next/headers';
 import Image from 'next/image';
@@ -19,8 +13,17 @@ import React from 'react'
 
 async function DestinationDetailspage ({params}) {
     const {id} = await params 
-    // console.log(id)
-    const res = await fetch(`http://localhost:5000/destination/${id}`)
+    const {token} = await auth.api.getToken({
+      headers : await headers()
+    })
+
+    console.log(token)
+
+    const res = await fetch(`http://localhost:5000/destination/${id}` , {
+      headers : {
+        authorization : 'Token'
+      }
+    })
     const Data = await  res.json();
     // console.log(Data)
 

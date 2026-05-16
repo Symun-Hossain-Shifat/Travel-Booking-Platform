@@ -33,10 +33,11 @@ const { data: session } = authClient.useSession()
       </ul>
     </div>
   </div>
-  <div className="navbar-center">
+  <div className=" navbar-center">
     <a className="btn btn-ghost text-xl">
         <Image 
         src={'/assets/Wanderlast.png'} 
+        className=''
         alt="Logo Image"
         height={100}
         width={150} />
