@@ -4,11 +4,17 @@ import React from 'react'
 function Bookingpage ({Data , Bookinginfo}) {
   console.log(Bookinginfo)
 
+  
+
+
    const Bookingfunction = async () => {
+    const {data : tokendata } = await authClient.token() 
+      console.log(tokendata)
      const res = await fetch('http://localhost:5000/booking' , {
       method : 'POST',
       headers : {
-          'content-type' : 'application/json'
+          'content-type' : 'application/json' ,
+          authorization : `Bearer ${tokendata?.token}`
       },
       body : JSON.stringify(Bookinginfo)
      })

@@ -17,9 +17,19 @@ export default async function MyBookings() {
       headers: await headers(),
     });
     const User = session?.user
+
+     const {token} = await auth.api.getToken({
+          headers : await headers()
+        })
+    
+        console.log(token)
     
     const Id = User?.id 
-  const res =  await fetch(`http://localhost:5000/booking/${Id}`)
+  const res =  await fetch(`http://localhost:5000/booking/${Id}` , {
+        headers : {
+              authorization: `Bearer ${ token || ''}`
+        }
+      })
   const Datas = await res.json()
   console.log(Datas)
 

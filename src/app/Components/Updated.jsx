@@ -9,11 +9,14 @@ import { RiDeleteBin6Line } from 'react-icons/ri'
 function Updatedpage ({Id}) {
     console.log(Id)
       const Deletebooking = async () => {
+         const {data : tokendata } = await authClient.token() 
+      console.log(tokendata)
     const res = await fetch(`http://localhost:5000/booking/${Id}` , {
         method : 'DELETE' , 
         headers : {
 
-        'content-type' : 'application/json' 
+        'content-type' : 'application/json'  ,
+        authorization : `Bearer ${tokendata?.token}`
         }
 
     })
