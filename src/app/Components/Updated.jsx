@@ -11,7 +11,7 @@ function Updatedpage ({Id}) {
       const Deletebooking = async () => {
          const {data : tokendata } = await authClient.token() 
       console.log(tokendata)
-    const res = await fetch(`http://localhost:5000/booking/${Id}` , {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${Id}` , {
         method : 'DELETE' , 
         headers : {
 

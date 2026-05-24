@@ -3,7 +3,7 @@ import React from 'react'
 import { TfiArrowTopRight } from 'react-icons/tfi'
 
 async function Destinationpage () {
-    const res = await fetch('http://localhost:5000/destination')
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination`)
     const Datas = await res.json()
     console.log(Datas)
   return (

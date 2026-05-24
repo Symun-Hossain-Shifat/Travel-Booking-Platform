@@ -17,7 +17,7 @@ export function WithForm({Data}) {
    const Datas  =  Object.fromEntries(formData.entries())
   //  console.log(Datas)
 
-   const res = await fetch(`http://localhost:5000/destination/${Data._id}` , {
+   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${Data._id}` , {
     method : 'PATCH',
     headers : {
         'content-type' : 'application/json'

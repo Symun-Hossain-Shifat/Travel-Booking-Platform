@@ -25,7 +25,7 @@ export default async function MyBookings() {
         console.log(token)
     
     const Id = User?.id 
-  const res =  await fetch(`http://localhost:5000/booking/${Id}` , {
+  const res =  await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${Id}` , {
         headers : {
               authorization: `Bearer ${ token || ''}`
         }
