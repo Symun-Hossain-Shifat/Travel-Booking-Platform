@@ -1,6 +1,7 @@
 'use client'
 
 
+import { authClient } from '@/lib/auth-client'
 import { redirect } from 'next/navigation'
 import React from 'react'
 import { FaEye } from 'react-icons/fa'
