@@ -1,23 +1,20 @@
-import { NextResponse } from 'next/server'
-import { auth } from './src/lib/auth'
+import { NextResponse } from "next/server";
 
-export async function middleware(request) {
-  const session = await auth.api.getSession({
-    headers: request.headers,
-  })
+export function middleware(request) {
+  const sessionToken = request.cookies.get("session")?.value;
 
-  if (session) {
-    return NextResponse.next()
+  if (!sessionToken) {
+    return NextResponse.redirect(new URL("/signin", request.url));
   }
 
-  return NextResponse.redirect(new URL('/signin', request.url))
+  return NextResponse.next();
 }
 
 export const config = {
   matcher: [
-    '/destinations/:path*',
-    '/bookingdestination',
-    '/addtravel',
-    '/profile',
+    "/destinations/:path*",
+    "/bookingdestination",
+    "/addtravel",
+    "/profile",
   ],
-}
+};
