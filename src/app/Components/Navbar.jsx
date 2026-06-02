@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { CgProfile } from 'react-icons/cg'
+import logo from '@/assets/Wanderlast.png'
 
 
 function Navbarpage () {
@@ -36,8 +37,8 @@ const { data: session } = authClient.useSession()
   <div className=" navbar-center">
     <a className="btn btn-ghost text-xl">
         <Image 
-        src={'/assets/Wanderlast.png'} 
-        className=''
+        src={logo} 
+       
         alt="Logo Image"
         height={100}
         width={150} />

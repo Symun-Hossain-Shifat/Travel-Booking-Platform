@@ -1,20 +1,19 @@
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, Star } from "lucide-react";
-import manone from '@/asset/man1.jpg'
-import mantwo from '@/asset/man2.jpg'
+
 
 export default function Testimonials() {
   const testimonials = [
     {
       name: "Michael Chen",
       role: "Traveler",
-      image: mantwo ,
+    
       text: "The Bali Trip was absolutely magical! Every detail was perfectly planned. The resorts were luxurious and the cultural experiences were unforgettable.",
     },
     {
       name: "Sarah Johnson",
       role: "New York, USA",
-      image: manone , // replace with your image
+    
       text: "Swiss Alps adventure exceeded all expectations. The mountain views were breathtaking and our guide was incredibly knowledgeable. Highly recommended!",
     },
   ];
