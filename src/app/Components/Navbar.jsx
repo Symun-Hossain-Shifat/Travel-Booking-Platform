@@ -7,12 +7,14 @@ import Link from 'next/link'
 import React from 'react'
 import { CgProfile } from 'react-icons/cg'
 import logo from '@/assets/Wanderlast.png'
+import { redirect } from 'next/navigation'
 
 
 function Navbarpage () {
  
 const signoutfunction = async () => {
   await authClient.signOut();
+  redirect('/')
 }
 const { data: session } = authClient.useSession()
 // console.log(session)
