@@ -1,4 +1,5 @@
 'use client'
+import { authClient } from '@/lib/auth-client'
 import React from 'react'
 
 function Bookingpage ({Data , Bookinginfo}) {

@@ -1,5 +1,6 @@
 'use client'
 import { Button, FieldError, Input, Label, ListBox, TextField , Select , TextArea, Card, Form } from '@heroui/react'
+import { redirect } from 'next/navigation';
 
 
 function Addtravelpage () {
@@ -17,7 +18,10 @@ function Addtravelpage () {
     body : JSON.stringify(Datas)
    })
    const Data = await res.json()
-   console.log(Data)
+   if(Data){
+    alert('Add Destination Successfull')
+    redirect('/')
+   }
     }
   return (
     <div className='mx-auto w-10/12 md:w-8/12 '>
